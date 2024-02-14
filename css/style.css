@@ -18,7 +18,15 @@ body{
     height: 700px;
 }
 
-#box-small-img i{
+.op-1{
+    opacity: 1;
+}
+
+.op-0{
+    opacity: 0;
+}
+
+i{
     color: rgb(181, 181, 181);
     background-color: #254070;
 
@@ -26,13 +34,13 @@ body{
     font-size: 45px;
 }
 
-#box-small-img i:nth-of-type(1){
+i:nth-of-type(1){
     left: 50%;
     transform: translate(-50%);
     top: 10px;
 }
 
-#box-small-img i:nth-of-type(2){
+i:nth-of-type(2){
     left: 50%;
     transform: translate(-50%);
     bottom: 10px;
