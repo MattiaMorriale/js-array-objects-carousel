@@ -41,46 +41,36 @@ const images = [
 
 for (let i = 0; i < images.length; i++) {
     console.log(images[i])
-
     
-    let text = "";
-
-    let img = "";
-
-    let bigimg = "";
-
-    for (let key in(images[i])) {
-
-        console.log(`${key}: ${images[i][key]}`)
-
-        if (key == 'image') {
-            
-            img += `<img class="img-fluid w-100 h-100  object-fit-cover" src="${images[i][key]}" alt="#">`;
-
-            bigimg += `<img class="img-fluid object-fit-cover w-100 photo" src="${images[i][key]}" alt="#">`;
-            
-            
-        } else {
-            
-            text += `<p>${images[i][key]}<br></p>`;
-            
-        }
-        
-    }
-
     col3Element.innerHTML += 
     `
     <div class="col-12 small-img">
-        ${img}
-    </div>
-    `
-         
-    col9Element.innerHTML += 
-    
-    `<div class="col-9 overflow-hidden p-0">
-        ${bigimg}
+        <img class="img-fluid w-100 h-100  object-fit-cover" src="${images[i].image}" alt="#">
     </div>
     `;
     
-
+    col9Element.innerHTML += 
+    
+    `    
+    <section class="slide">
+    
+    <img class="img-fluid object-fit-cover w-100 photo" src="${images[i].image}" alt="#">
+    
+        <div class="details">
+    
+            <h3 class="title">
+                ${images[i].title}
+            </h3>
+    
+            <div class="text">
+                ${images[i].text}
+            </div>
+        
+        </div>
+        
+    </section>
+    `;
+    
+    
 }
+

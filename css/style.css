@@ -43,7 +43,7 @@ i:nth-of-type(1){
 i:nth-of-type(2){
     left: 50%;
     transform: translate(-50%);
-    bottom: 10px;
+    top: 640px;
 }
 
 
