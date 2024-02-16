@@ -8,11 +8,6 @@ col3Element.classList.add('col-3', 'position-relative', 'p-0');
 
 rowBoxElement.append(col9Element,col3Element);
 
-col3Element.innerHTML = 
-`
-<i class="fa-solid fa-circle-chevron-up position-absolute"></i>
-<i class="fa-solid fa-circle-chevron-down position-absolute"></i>
-`
 
 
 const images = [
@@ -39,38 +34,133 @@ const images = [
     }
 ];
 
-for (let i = 0; i < images.length; i++) {
-    console.log(images[i])
+col3Element.innerHTML = 
+`
+    <i class="fa-solid fa-circle-chevron-down position-absolute" id="down-arrow"></i>
+    <i class=" fa-solid fa-circle-chevron-up position-absolute" id="up-arrow"></i>
+
+`
+
+
+
+
+
+images.forEach(function(currentImage, index) {
     
     col3Element.innerHTML += 
     `
     <div class="col-12 small-img">
-        <img class="img-fluid w-100 h-100  object-fit-cover" src="${images[i].image}" alt="#">
+        <img class="img-fluid w-100 h-100  object-fit-cover" src="${currentImage.image}" alt="${index + 1}">
     </div>
     `;
     
     col9Element.innerHTML += 
     
-    `    
-    <section class="slide">
+    `
+    <div class="slider">
+
+        <section class="slide ">
+
+            <img class="img-fluid object-fit-cover w-100 photo" src="${currentImage.image}" alt="${index + 1}">
     
-    <img class="img-fluid object-fit-cover w-100 photo" src="${images[i].image}" alt="#">
-    
-        <div class="details">
-    
-            <h3 class="title">
-                ${images[i].title}
-            </h3>
-    
-            <div class="text">
-                ${images[i].text}
+            <div class="details">
+
+                <h3 class="title">
+                    ${currentImage.title}
+                </h3>
+
+                <div class="text">
+                    ${currentImage.text}
+                </div>
+
             </div>
-        
-        </div>
-        
-    </section>
+
+        </section>
+
+    </div>
     `;
     
     
+})
+
+let formaggi = document.getElementsByClassName('slide');
+
+formaggi[0].className += ' active'
+
+let slideNumber = 0;
+
+showSlide(slideNumber)
+
+document.querySelector("#up-arrow").addEventListener("click", function() {
+    
+    slideNumber--;
+    
+    if (slideNumber < 0) {
+
+        slideNumber = images.length - 1;
+        
+        
+        
+    } showSlide(slideNumber % images.length);
+    
+    
+
+})
+
+document.querySelector("#down-arrow").addEventListener("click", function() {
+
+
+    slideNumber++;
+
+    showSlide(slideNumber % images.length);
+});
+
+
+const thumbnailsElements = document.querySelectorAll(".small-img");
+
+thumbnailsElements.forEach(((currentThumbnail, index) => {
+
+    currentThumbnail.addEventListener("click", () => {
+
+        slideNumber = index;
+        
+        showSlide(slideNumber);
+
+    })
+
+}));
+
+function showSlide(number) {
+    console.log(number)
+
+    const slides = formaggi;
+
+    if (number >= images.length){
+
+        number = 0
+
+    } else if (number < 0) {
+
+        number = images.length - 1
+
+    }
+ 
+    for (let index = 0; index < slides.length; index++) {
+
+        if (index == number) {
+
+            formaggi[index].classList.add('active')
+
+        } else {
+
+            formaggi[index].classList.remove('active')
+
+        }
+    } 
+
+    slides[number].classList.add('active')
+
 }
+
+console.log(formaggi)
 
