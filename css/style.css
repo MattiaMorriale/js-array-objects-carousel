@@ -46,6 +46,8 @@ body{
 
 .small-img{
     height: 140px;
+
+    border-left: #254070 solid 3px;
 }
 
 .slider .slide:not(.active) {
@@ -61,7 +63,9 @@ body{
 }
 
 #buttons button {
-    padding: 12px 18px;
+    padding: 12px 13px;
+
+    background-color: #254070;
 
     border-radius: 12px;
 }

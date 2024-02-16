@@ -164,3 +164,67 @@ function showSlide(number) {
 
 console.log(formaggi)
 
+const playButton = document.querySelector("#play-button");
+const pauseButton = document.querySelector("#pause-button");
+const reverseButton = document.querySelector("#reverse-button");
+
+
+
+
+let timer;
+
+playButton.addEventListener("click", () => {
+
+    playButton.style.display = "none";
+    pauseButton.style.display = "inline-block";
+    reverseButton.style.display = "none";
+
+
+    timer = setInterval(function() {
+    
+        if(slideNumber > images.length -1) {
+            slideNumber = 1;
+            showSlide(slideNumber);
+    
+        } else {
+    
+            slideNumber++;
+            showSlide(slideNumber);
+        }
+    
+    }, 3000);
+});
+
+
+pauseButton.addEventListener("click", () => {
+    playButton.style.display = "inline-block";
+    reverseButton.style.display = "inline-block"
+    pauseButton.style.display = "none";
+
+    clearInterval(timer);
+});
+
+
+reverseButton.addEventListener("click", () => {
+    reverseButton.style.display = "none"
+    playButton.style.display = "none";
+    pauseButton.style.display = "inline-block";
+
+
+
+    timer = setInterval(function() {
+    
+        if(slideNumber <= 1) {
+            slideNumber = images.length;
+            showSlide(slideNumber);
+    
+        } else {
+    
+            slideNumber--;
+            showSlide(slideNumber);
+        }
+    
+    }, 3000);
+
+}); 
+
